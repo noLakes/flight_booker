@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-alpha = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"].split('')
+
 
 def code_gen
+  alpha = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"].split('')
   result = []
   3.times { result << alpha.sample}
   result.join('')
