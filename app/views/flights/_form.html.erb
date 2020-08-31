@@ -1,0 +1,34 @@
+
+<%= form_with model: @flight, method: :get do |f| %>
+  
+  <%= f.label :from %>
+  <select name="departure_airport_id">
+    <%= @airports.each do |port| %>
+      <option value="<%= port.id %>"><%= port.code%></option>
+    <% end %>
+  </select>
+
+  </br></br>
+
+  <%= f.label :to %>
+  <select name="arrival_airport_id">
+    <%= @airports.each do |port| %>
+      <option value="<%= port.id %>"><%= port.code%></option>
+    <% end %>
+  </select>
+
+  </br></br>
+
+  <%= f.label :passengers%>
+  <select name="passengers">
+    <% 4.times do |i|%>
+      <option value="<%= i + 1 %>"><%= i + 1 %></option>
+    <% end %>
+  </select>
+
+  </br></br>
+
+  <%= f.label :time%>
+  <%= f.date_select :time %></br></br>
+
+<% end %>
