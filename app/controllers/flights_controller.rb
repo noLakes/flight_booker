@@ -1,4 +1,7 @@
-class FlighsController < ApplicationController
+class FlightsController < ApplicationController
+
+  def index
+  end
 
   def show
   end
@@ -17,4 +20,5 @@ class FlighsController < ApplicationController
   def flight_params
 
   end
+
 end
