@@ -9,7 +9,7 @@
 
 
 def code_gen
-  alpha = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"].split('')
+  alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('')
   result = []
   3.times { result << alpha.sample}
   result.join('')
