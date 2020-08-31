@@ -1,0 +1,4 @@
+class FlighsController < ApplicationController
+
+  
+end
