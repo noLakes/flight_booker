@@ -28,8 +28,12 @@
 
   </br></br>
 
-  <%= f.label :time%>
-  <%= f.date_select :time %></br></br>
+  <%= f.label :departure_date%>
+  <select name="date">
+    <% @flights.each do |fl| %>
+      <option value="<%= fl.time %>"><%= fl.time.to_formatted_s(:short) %></option>
+    <% end %>
+  </select></br></br>
   <%= f.submit :Search %>
 
 <% end %>
