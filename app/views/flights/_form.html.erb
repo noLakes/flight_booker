@@ -1,8 +1,8 @@
 
-<%= form_with model: @flight, method: :get do |f| %>
+<%= form_with url: "/flights", method: :get do |f| %>
   
   <%= f.label :from %>
-  <select name="departure_airport_id">
+  <select name="search[from_code]">
     <%= @airports.each do |port| %>
       <option value="<%= port.id %>"><%= port.code%></option>
     <% end %>
@@ -11,7 +11,7 @@
   </br></br>
 
   <%= f.label :to %>
-  <select name="arrival_airport_id">
+  <select name="search[to_code]">
     <%= @airports.each do |port| %>
       <option value="<%= port.id %>"><%= port.code%></option>
     <% end %>
@@ -29,11 +29,11 @@
   </br></br>
 
   <%= f.label :departure_date%>
-  <select name="date">
-    <% @flights.order(:time).each do |fl| %>
+  <select name="search[time]">
+    <% Flight.all.order(:time).each do |fl| %>
       <option value="<%= fl.time %>"><%= fl.time.to_formatted_s(:long) %></option>
     <% end %>
   </select></br></br>
-  <%= f.submit :Search %>
+  <%= f.submit :Search, name: nil %>
 
 <% end %>

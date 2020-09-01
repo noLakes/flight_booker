@@ -1,3 +1,15 @@
-<h1>Find Your Flight!</h1>
+<h1>Search For A Flight!</h1>
 
 <%= render  "form" %>
+
+<h2>Flights</h2>
+
+<% if !@flights.nil? %>
+  
+  <% @flights.each do |f|%>
+    <%= "#{f.departure_airport.code} >> #{f.arrival_airport.code}" %></br>
+  <% end %>
+
+<% else %>
+  <p>Please enter search above</p>
+<% end %>
