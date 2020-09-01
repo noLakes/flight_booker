@@ -17,7 +17,7 @@ end
 
 def rand_time
   a = DateTime.now.to_i
-  b = a + 500
+  b = a + 31447285
   Time.at(rand(a..b))
 end
 
