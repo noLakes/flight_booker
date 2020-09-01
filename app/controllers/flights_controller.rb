@@ -1,7 +1,8 @@
 class FlightsController < ApplicationController
 
   def index
-    @flights = Flight.search(params[:search])
+    @flights = Flight.all
+    @search = Flight.search(params[:search])
     @airports = Airport.all
   end
 
@@ -20,7 +21,7 @@ class FlightsController < ApplicationController
   private
 
   def flight_params
-    params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :time, :duration)
+    params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :time, :duration, :search)
   end
 
 end

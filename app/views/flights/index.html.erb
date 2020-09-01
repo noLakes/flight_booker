@@ -4,9 +4,9 @@
 
 <h2>Flights</h2>
 
-<% if !@flights.nil? %>
+<% if !@search.nil? %>
   
-  <% @flights.each do |f|%>
+  <% @search.each do |f|%>
     <%= "#{f.departure_airport.code} >> #{f.arrival_airport.code}" %></br>
   <% end %>
 
