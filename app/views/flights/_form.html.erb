@@ -30,7 +30,7 @@
 
   <%= f.label :departure_date%>
   <select name="date">
-    <% @flights.each do |fl| %>
+    <% @flights.order(:time).each do |fl| %>
       <option value="<%= fl.time %>"><%= fl.time.to_formatted_s(:long) %></option>
     <% end %>
   </select></br></br>
