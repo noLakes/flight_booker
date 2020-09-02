@@ -11,4 +11,8 @@ class Flight < ApplicationRecord
     end
   end
 
+  def display
+    "#{self.departure_airport.code} >> #{self.arrival_airport.code}\nDeparting #{self.time.to_formatted_s(:short)}"
+  end
+
 end
