@@ -4,12 +4,16 @@
 
 <h2>Flights</h2>
 
-<% if !@search.nil? %>
-  
-  <% @search.each do |f|%>
-    <%= "#{f.departure_airport.code} >> #{f.arrival_airport.code}" %></br>
+<% if !@search.nil?%>
+  <%= form_for( :booking, method: :get, remote: true) do |form| %>
+    <% @search.each do |fl|%>
+      <%= radio_button :flight, fl.id, checked: false %> <%= fl.display %>
+    <% end %>
+    </br></br>
+    <%= form.submit :Book, name: nil %>
   <% end %>
 
 <% else %>
   <p>Please enter search above</p>
 <% end %>
+
