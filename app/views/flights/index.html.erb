@@ -7,7 +7,7 @@
 <% if !@search.nil?%>
   <%= form_for( :booking, method: :get, remote: true) do |form| %>
     <% @search.each do |fl|%>
-      <%= radio_button :flight, fl.id, checked: false %> <%= fl.display %>
+      <%= radio_button :booking, :flight_id, fl.id %> <%= fl.display %>
     <% end %>
     </br></br>
     <%= form.submit :Book, name: nil %>
