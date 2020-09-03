@@ -5,7 +5,9 @@
 <h2>Flights</h2>
 
 <% if !@search.nil?%>
-  <%= form_for( :booking, method: :get, remote: true) do |form| %>
+  <%= form_with url: "/bookings/new", method: :get, local: true do |form| %>
+  <%= form.hidden_field "booking[passenger_count]", :value => params[:passengers] %>
+    
     <% @search.each do |fl|%>
       <%= radio_button :booking, :flight_id, fl.id %> <%= fl.display %>
     <% end %>
