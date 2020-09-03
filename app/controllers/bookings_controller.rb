@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @flight = Flight.find(booking_params[:flight_id])
   end
 
   def create
@@ -14,6 +15,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit()
+    params.require(:booking).permit(:passenger_count, :flight_id)
   end
 end
