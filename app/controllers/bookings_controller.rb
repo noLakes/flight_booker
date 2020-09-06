@@ -10,6 +10,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+
+    booking_params[:passengers_attributes].each do |p|
+      @booking.passengers.build(:name => p[0], :email => p[1])
+    end
+
+    if @booking.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,6 +28,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:passenger_count, :flight_id, :passengers_attributes)
+    params.require(:booking).permit(:passenger_count, :flight_id,
+      passengers_attributes:[:name, :email])
   end
 end
