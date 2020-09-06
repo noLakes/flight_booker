@@ -24,3 +24,18 @@
     <td><%= "#{@flight.duration} hrs" %></td>
   </tr>
 </table>
+
+<%= form_for( @booking , remote: true) do |f| %>
+  <% @passenger_count.times do |i| %>
+  <h3><%= "Passenger #{i+1}"%></h3>
+    <%= f.fields_for :passenger do |passenger_fields| %>
+      <%= passenger_fields.label :name%>
+      <%= passenger_fields.text_field(:name) %>
+      </br>
+      <%= passenger_fields.label :email%>
+      <%= passenger_fields.text_field(:email) %>
+      </br></br>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
