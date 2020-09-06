@@ -25,17 +25,18 @@
   </tr>
 </table>
 
+<h3>Passenger Booking Information</h3>
 <%= form_for( @booking , remote: true) do |f| %>
-  <% @passenger_count.times do |i| %>
-  <h3><%= "Passenger #{i+1}"%></h3>
-    <%= f.fields_for :passenger do |passenger_fields| %>
-      <%= passenger_fields.label :name%>
-      <%= passenger_fields.text_field(:name) %>
-      </br>
-      <%= passenger_fields.label :email%>
-      <%= passenger_fields.text_field(:email) %>
-      </br></br>
-    <% end %>
+  <%= f.fields_for :passengers do |p_fields| %>
+      <li>
+        <h4><%= "Passenger #{p_fields.index + 1}"%></h4>  
+        <%= p_fields.label :name%>
+        <%= p_fields.text_field(:name) %>
+        </br>
+        <%= p_fields.label :email%>
+        <%= p_fields.text_field(:email) %>
+        </br></br>
+      </li>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit name: nil%>
 <% end %>
