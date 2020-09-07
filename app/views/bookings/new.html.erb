@@ -1,29 +1,6 @@
 <h1>Booking Process</h1>
 
-<h3>Flight Details</h3>
-
-<table>
-  <tr>
-    <td>Flight #:</td>
-    <td><%= @flight.id %></td>
-  </tr>
-  <tr>
-    <td>From:</td>
-    <td><%= @flight.departure_airport.code %></td>
-  </tr>
-  <tr>
-    <td>To:</td>
-    <td><%= @flight.arrival_airport.code %></td>
-  </tr>
-  <tr>
-    <td>Time:</td>
-    <td><%= @flight.time.to_formatted_s(:short) %></td>
-  </tr>
-  <tr>
-    <td>Duration:</td>
-    <td><%= "#{@flight.duration} hrs" %></td>
-  </tr>
-</table>
+<%= render "flight_details"%>
 
 <h3>Passenger Booking Information</h3>
 <%= form_for( @booking , remote: true) do |f| %>
