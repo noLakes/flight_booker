@@ -27,6 +27,8 @@
 
 <h3>Passenger Booking Information</h3>
 <%= form_for( @booking , remote: true) do |f| %>
+  <%= f.hidden_field "passenger_count", :value => params[:booking][:passenger_count] %>
+  <%= f.hidden_field "flight_id", :value => @flight.id %>
   <%= f.fields_for :passengers do |p_fields| %>
       <li>
         <h4><%= "Passenger #{p_fields.index + 1}"%></h4>  

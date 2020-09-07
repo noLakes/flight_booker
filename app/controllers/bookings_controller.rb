@@ -2,33 +2,28 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @flight = Flight.find(booking_params[:flight_id])
-    booking_params[:passenger_count].to_i.times { @booking.passengers.build }
-
-    
+    @flight = Flight.find(params[:booking][:flight_id])
+    params[:booking][:passenger_count].to_i.times { @booking.passengers.build } 
   end
 
   def create
     @booking = Booking.new(booking_params)
 
-    booking_params[:passengers_attributes].each do |p|
-      @booking.passengers.build(:name => p[0], :email => p[1])
-    end
-
-    if @booking.save
-      redirect_to root_path
+    if @booking.save!
+      redirect_to bookings_path
     else
       render :new
     end
   end
 
-  def show
+  def index
+    @bookings = Booking.all.order("created_at DESC")
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:passenger_count, :flight_id,
+    params.require(:booking).permit(:flight_id, :passenger_count,
       passengers_attributes:[:name, :email])
   end
 end

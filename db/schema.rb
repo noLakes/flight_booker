@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 2020_09_03_224425) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "flight_id"
     t.integer "booking_id"
     t.index ["booking_id"], name: "index_passengers_on_booking_id"
-    t.index ["flight_id"], name: "index_passengers_on_flight_id"
   end
 
 end
