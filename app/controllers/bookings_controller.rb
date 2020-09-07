@@ -10,14 +10,15 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save!
-      redirect_to bookings_path
+      redirect_to @booking
     else
       render :new
     end
   end
 
-  def index
-    @bookings = Booking.all.order("created_at DESC")
+  def show
+    @booking = Booking.find(params[:id])
+    @flight = Flight.find(@booking.flight_id)
   end
 
   private
